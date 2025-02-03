@@ -8,6 +8,22 @@
     <!-- DaisyUI and Tailwind CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/logo.webp" type="image/x-icon">
+    <!-- Custom CSS -->
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .basic {
+            color: #0E7A81;
+        }
+
+        .bg-basic {
+            background-color: #0E7A81;
+        }
+    </style>
 </head>
 
 <body>
@@ -42,17 +58,42 @@
                     </ul>
                 </div>
                 <div class="navbar-end">
-                    <img class="w-[35px]" src="images/icons8-account-48.png" alt="Profile">
+                    <img class="w-[35px] cursor-pointer" src="images/icons8-account-48.png" alt="Profile">
                 </div>
             </div>
         </nav>
-        <!-- Navbar Ends -->
+        <!-- Banner Section -->
+        <section class="flex md:flex-col flex-col-reverse text-center text-xl md:my-16 my-4">
+            <div class="space-y-6">
+                <p class="font-semibold basic">Bringing Families Together 🔥</p>
+                <h1 class="md:text-7xl text-4xl text font-bold md:font-semibold md:my-6">Your Path to Adoption <br> Starts Here</h1>
+                <p class="max-w-[752px] mx-auto text-slate-700 md:text-xl">If you are looking for an animal as friend who will stay beside you all the time and want to pet it, you are in the best place. Start your adoption now!</p>
+                <div>
+                    <a href="#main"><button class="bg-basic text-white font-semibold text-xl rounded-xl md:py-4 py-3 md:px-8 px-4 hover:bg-slate-600">View More</button></a>
+                </div>
+            </div>
+            </div>
+            <div>
+                <img class="mx-auto" src="images/pet.webp" alt="Banner">
+            </div>
+        </section>
     </header>
-    <main class="md:w-10/12 w-11/12 mx-auto">
-
+    <main id="main" class="md:w-10/12 w-11/12 mx-auto">
+        <section class="md:my-24 my-12 text-center space-y-4 flex flex-col">
+            <h1 class="font-bold md:text-5xl text-2xl">Adopt Your Best Friend</h1>
+            <p class="md:text-xl">Here you can choose your desired category of pet as well as see their detailed information. <br> So, search your new friend.</p>
+        </section>
     </main>
-    <footer>
-
+    <footer class="bg-black">
+        <div>
+            <a class="btn btn-ghost text-2xl font-bold my-4 text-white"><img src="images/logo.webp" alt="Logo">Peddy</a>
+            <p class="text-slate-300">Location: av. Washington 165, NY CA 54003</p>
+            <p class="text-slate-300">Phone: +31 85 964 47 25</p>
+            <p class="text-slate-300">Email: info@yourdomain.com</p>
+            <p class="text-slate-300">Openings hours: 9.00 AM - 5.00 PM</p>
+        </div>
+        <div></div>
+        <div></div>
     </footer>
 </body>
 
