@@ -10,10 +10,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/logo.webp" type="image/x-icon">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <style>
         html {
             scroll-behavior: smooth;
+        }
+
+        .lato {
+            font-family: "Lato", serif;
+            font-style: normal;
         }
 
         .basic {
@@ -26,7 +35,7 @@
     </style>
 </head>
 
-<body>
+<body class="lato">
     <header class="md:w-10/12 w-11/12 mx-auto">
         <!-- Navbar Starts -->
         <nav>
@@ -39,22 +48,22 @@
                             </svg>
                         </div>
                         <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                            <li><a>Home</a></li>
+                            <li><a class="basic">Home</a></li>
                             <li>
-                                <a>Shop</a>
+                                <a class="basic">Shop</a>
                             </li>
-                            <li><a>Contact</a></li>
+                            <li><a class="basic">Contact</a></li>
                         </ul>
                     </div>
-                    <a class="btn btn-ghost text-2xl font-bold"><img src="images/logo.webp" alt="Logo">Peddy</a>
+                    <a class="btn btn-ghost text-2xl font-bold"><img class="inline max-w-7" src="images/logo.webp" alt="Logo">Peddy</a>
                 </div>
                 <div class="navbar-center hidden lg:flex">
                     <ul class="menu menu-horizontal px-1">
-                        <li><a>Home</a></li>
+                        <li><a class="basic">Home</a></li>
                         <li>
-                            <a>Shop</a>
+                            <a class="basic">Shop</a>
                         </li>
-                        <li><a>Contact</a></li>
+                        <li><a class="basic">Contact</a></li>
                     </ul>
                 </div>
                 <div class="navbar-end">
@@ -67,9 +76,9 @@
             <div class="space-y-6">
                 <p class="font-semibold basic">Bringing Families Together 🔥</p>
                 <h1 class="md:text-7xl text-4xl text font-bold md:font-semibold md:my-6">Your Path to Adoption <br> Starts Here</h1>
-                <p class="max-w-[752px] mx-auto text-slate-700 md:text-xl">If you are looking for an animal as friend who will stay beside you all the time and want to pet it, you are in the best place. Start your adoption now!</p>
+                <p class="max-w-[752px] mx-auto basic md:text-xl">If you are looking for an animal as friend who will stay beside you all the time and want to pet it, you are in the best place. Start your adoption now!</p>
                 <div>
-                    <a href="#main"><button class="bg-basic text-white font-semibold text-xl rounded-xl md:py-4 py-3 md:px-8 px-4 hover:bg-slate-600">View More</button></a>
+                    <a href="#main"><button class="bg-basic text-white font-semibold text-xl rounded-lg md:py-4 py-3 md:px-8 px-4 hover:bg-slate-600">View More</button></a>
                 </div>
             </div>
             </div>
@@ -78,22 +87,56 @@
             </div>
         </section>
     </header>
-    <main id="main" class="md:w-10/12 w-11/12 mx-auto">
+    <main id="main" class="md:w-10/12 w-11/12 mx-auto md:my-24 my-12">
         <section class="md:my-24 my-12 text-center space-y-4 flex flex-col">
             <h1 class="font-bold md:text-5xl text-2xl">Adopt Your Best Friend</h1>
-            <p class="md:text-xl">Here you can choose your desired category of pet as well as see their detailed information. <br> So, search your new friend.</p>
+            <p class="md:text-xl basic">Here you can choose your desired category of pet as well as see their detailed information. <br> So, search your new friend.</p>
+        </section>
+        <!-- Category Section -->
+        <section id="category-container" class="md:my-8 my-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+
+        </section>
+        <section class="flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Best Deal for You</h1>
+            <button class="bg-basic text-white font-semibold text-xl rounded-lg md:py-4 py-3 md:px-8 px-4 hover:bg-slate-600">Sort by Price</button>
         </section>
     </main>
-    <footer class="bg-black">
-        <div>
-            <a class="btn btn-ghost text-2xl font-bold my-4 text-white"><img src="images/logo.webp" alt="Logo">Peddy</a>
-            <p class="text-slate-300">Location: av. Washington 165, NY CA 54003</p>
-            <p class="text-slate-300">Phone: +31 85 964 47 25</p>
-            <p class="text-slate-300">Email: info@yourdomain.com</p>
-            <p class="text-slate-300">Openings hours: 9.00 AM - 5.00 PM</p>
+    <footer class="bg-black md:py-24 md:px-36 py-12 px-8">
+        <section class="grid md:grid-cols-3 grid-cols-1 md:place-items-center">
+            <div>
+                <a class="text-2xl font-bold my-4 text-white"><img class="inline max-w-7 mr-3" src="images/logo.webp" alt="Logo">Peddy</a>
+                <div class="my-4 space-y-3">
+                    <p class="text-slate-300">Location: av. Washington 165, NY CA 54003</p>
+                    <p class="text-slate-300">Phone: +31 85 964 47 25</p>
+                    <p class="text-slate-300">Email: info@yourdomain.com</p>
+                    <p class="text-slate-300">Openings hours: 9.00 AM - 5.00 PM</p>
+                </div>
+
+            </div>
+            <div>
+                <p class="text-2xl font-bold my-4 text-white">Useful Links</p>
+                <div class="space-y-2">
+                    <p><a class="text-slate-300" href="Home">Home</a></p>
+                    <p><a class="text-slate-300" href="About Us">About Us</a></p>
+                    <p><a class="text-slate-300" href="Animals">Animals</a></p>
+                    <p><a class="text-slate-300" href="Foundation">Foundation</a></p>
+                    <p><a class="text-slate-300" href="Contact">Contact</a></p>
+                </div>
+            </div>
+            <div>
+                <p class="text-2xl font-bold mb-8 text-white md:mt-0 mt-8">Drop a Message</p>
+                <div class="space-y-4">
+                    <input class="bg-[rgba(255,255,255,0.05)] py-3 px-4 rounded-xl w-full" placeholder="Enter your Email" type="text">
+                    <div><button class="bg-[#0E7A81] text-white font-semibold text-xl rounded-lg w-full md:py-3 py-3 md:px-16 px-4 hover:bg-slate-600">Subscribe</button></div>
+                </div>
+            </div>
+        </section>
+        <div class="flex gap-2 md:pl-12 md:mt-0 mt-8">
+            <img class="max-w-11" src="images/icons8-facebook-logo-48.png" alt="Facebook">
+            <img class="max-w-11 text-white" src="images/x-logo-2.png" alt="X">
+            <img class="max-w-11" src="images/icons8-youtube-48.png" alt="Youtube">
+            <img class="max-w-11" src="images/icons8-instagram-logo-94.png" alt="Instagram">
         </div>
-        <div></div>
-        <div></div>
     </footer>
 </body>
 
