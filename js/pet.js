@@ -56,13 +56,13 @@ const displayPets = (pets) => {
             petDiv.innerHTML = `
         <div class="p-6 border-2 shadow-xl md:shadow-md rounded-xl space-y-2 md:h-[432px]">
                 <img src="${image}" class="rounded-xl w-[272px] h-[160px]">
-                <h2 class="text-xl font-extrabold">${pet.pet_name}</h2>
-                <p class="basic font-bold"><img class="inline w-5" src="images/icons8-apps-48.png" alt=""> Breed: ${breed}</p>
-                <p class="basic font-bold"><img class="inline w-5" src="images/icons8-date-50.png" alt=""> Birth: ${pet.date_of_birth}</p>
-                <p class="basic font-bold"><img class="inline w-5" src="images/icons8-male-female-32.png" alt=""> Gender: ${gender}</p>
-                <p class="basic font-bold"><img class="inline w-5" src="images/icons8-dollar-50.png" alt=""> Price: $${price}</p>
+                <h2 class="text-xl font-extrabold">${pet.pet_name ? pet.pet_name : 'Not Named Yet'}</h2>
+                <p class="basic font-bold"><img class="inline w-5" src="images/icons8-apps-48.png" alt=""> Breed: ${breed ? breed : 'Normal Breed'}</p>
+                <p class="basic font-bold"><img class="inline w-5" src="images/icons8-date-50.png" alt=""> Birth: ${pet.date_of_birth ? pet.date_of_birth : 'Not Known'}</p>
+                <p class="basic font-bold"><img class="inline w-5" src="images/icons8-male-female-32.png" alt=""> Gender: ${gender ? gender : 'Not Mentioned'}</p>
+                <p class="basic font-bold"><img class="inline w-5" src="images/icons8-dollar-50.png" alt=""> Price: ${price ? '$' + price : ' Not Available'}</p>
                 <div class="flex items-center gap-5 pt-4">
-                    <div><img class="inline w-5 cursor-pointer" src="images/icons8-like-50.png" alt=""></div>
+                    <button onclick="petById('${pet.petId}')" class="hover:bg-[rgb(169,221,224)] rounded-xl"><img class="inline w-5 cursor-pointer" src="images/icons8-like-50.png" alt=""></button>
                     <div><button class="basic hover:ring-2 hover:ring-[rgb(14,122,129)] hover:bg-[rgba(14,122,129,0.1)] font-semibold text-lg rounded-xl md:py-2 py-1 md:px-5 px-3">Adopt</button></div>
                     <div><button class="basic hover:ring-2 hover:ring-[rgb(14,122,129)] hover:bg-[rgba(14,122,129,0.1)] font-semibold text-lg rounded-xl md:py-2 py-1 md:px-5 px-3">Details</button></div>
                 </div>
@@ -72,11 +72,36 @@ const displayPets = (pets) => {
             petDetails.append(petDiv);
         })
         petsContainer.append(petDetails);
+        petDetails.classList = "grid md:grid-cols-3 grid-cols-1 md:my-8 my-6 gap-6 mx-auto";
     }
     else {
-        const noInfo = document.getElementById('no-info');
-        noInfo.classList.remove = 'hidden';
+        petDetails.classList = "items-center grid grid-cols-1";
+        petDetails.innerHTML = `
+            <div class="flex flex-col justify-center items-center w-3/4 md:my-8 my-6 gap-6 mx-auto">
+                    <img src="./images/error.webp">
+                    <h1 class="text-3xl font-extrabold text-center">No Information Available</h1>
+                    <p class="basic font-bold text-center">As the rate of selling birds was comparatively higher last month, it went out of stock. We are currently unable to provide you your desired pet. Keep in touch with us for further information.</p>
+            </div>
+        `;
+        petsContainer.append(petDetails);
     }
+}
+
+// Liked pets Function
+const petById = async (petID) => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petID}`);
+    const data = await res.json();
+    likedPets(data.petData);
+}
+
+// Liked pets displayed
+const likedPets = (liked) => {
+    const likedContainer = document.getElementById('liked-pets');
+    const likedImage = document.createElement('div');
+    likedImage.innerHTML = `
+    <img src="${liked.image}" class="w-[124px] h-[124px] rounded-xl object-cover">
+    `;
+    likedContainer.append(likedImage);
 }
 
 
