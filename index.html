@@ -32,6 +32,32 @@
         .bg-basic {
             background-color: #0E7A81;
         }
+
+        .loader {
+            width: 8px;
+            height: 48px;
+            display: block;
+            margin: auto;
+            left: -20px;
+            position: relative;
+            border-radius: 4px;
+            box-sizing: border-box;
+            animation: animloader 1s linear infinite alternate;
+        }
+
+        @keyframes animloader {
+            0% {
+                box-shadow: 20px 0 rgba(255, 255, 255, 0.25), 40px 0 white, 60px 0 white;
+            }
+
+            50% {
+                box-shadow: 20px 0 white, 40px 0 rgba(255, 255, 255, 0.25), 60px 0 white;
+            }
+
+            100% {
+                box-shadow: 20px 0 white, 40px 0 white, 60px 0 rgba(255, 255, 255, 0.25);
+            }
+        }
     </style>
 </head>
 
@@ -104,8 +130,14 @@
         <!-- All Pets Section -->
         <section id="all-pets-container" class="flex flex-col-reverse md:flex-row-reverse items-start justify-center gap-6">
             <div id="pet-details" class="grid md:grid-cols-3 grid-cols-1 md:my-8 my-6 gap-6 mx-auto">
+                <div id="no-info" class="hidden">
+                    <img src="./images/error.webp">
+                    <h1 class="text-3xl font-extrabold text-center">No Information Available</h1>
+                    <p class="basic font-bold text-center">As the rate of selling birds was comparatively higher last month, it went out of stock. We are currently unable to provide you your desired pet. Keep in touch with us for further information.</p>
+                </div>
 
             </div>
+
 
             <!-- Liked Pets -->
             <div class="grid grid-cols-2 gap-5 p-6 border-2 shadow-md rounded-xl md:my-8 my-3 mx-auto">

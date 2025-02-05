@@ -48,11 +48,12 @@ const displayPets = (pets) => {
     const petsContainer = document.getElementById('all-pets-container');
     const petDetails = document.getElementById('pet-details');
 
-    pets.forEach((pet) => {
-        const petDiv = document.createElement('div');
-        const { petId, breed, category, birth, price, image, gender } = pet;
+    if (pets.length !== 0) {
+        pets.forEach((pet) => {
+            const petDiv = document.createElement('div');
+            const { petId, breed, category, birth, price, image, gender } = pet;
 
-        petDiv.innerHTML = `
+            petDiv.innerHTML = `
         <div class="p-6 border-2 shadow-xl md:shadow-md rounded-xl space-y-2 md:h-[432px]">
                 <img src="${image}" class="rounded-xl w-[272px] h-[160px]">
                 <h2 class="text-xl font-extrabold">${pet.pet_name}</h2>
@@ -68,9 +69,14 @@ const displayPets = (pets) => {
             </div>
         `;
 
-        petDetails.append(petDiv);
-    })
-    petsContainer.append(petDetails);
+            petDetails.append(petDiv);
+        })
+        petsContainer.append(petDetails);
+    }
+    else {
+        const noInfo = document.getElementById('no-info');
+        noInfo.classList.remove = 'hidden';
+    }
 }
 
 
