@@ -33,13 +33,18 @@
             background-color: #0E7A81;
         }
 
-        .loader {
+        .hidden {
+            display: none;
+        }
+
+        #spinner {
             width: 8px;
             height: 48px;
-            display: block;
+            display: none;
             margin: auto;
             left: -20px;
             position: relative;
+            z-index: 1;
             border-radius: 4px;
             box-sizing: border-box;
             animation: animloader 1s linear infinite alternate;
@@ -47,15 +52,15 @@
 
         @keyframes animloader {
             0% {
-                box-shadow: 20px 0 rgba(255, 255, 255, 0.25), 40px 0 white, 60px 0 white;
+                box-shadow: 20px 0 rgba(255, 255, 255, 0.25), 40px 0 black, 60px 0 black;
             }
 
             50% {
-                box-shadow: 20px 0 white, 40px 0 rgba(255, 255, 255, 0.25), 60px 0 white;
+                box-shadow: 20px 0 black, 40px 0 rgba(255, 255, 255, 0.25), 60px 0 black;
             }
 
             100% {
-                box-shadow: 20px 0 white, 40px 0 white, 60px 0 rgba(255, 255, 255, 0.25);
+                box-shadow: 20px 0 black, 40px 0 black, 60px 0 rgba(255, 255, 255, 0.25);
             }
         }
     </style>
@@ -104,7 +109,7 @@
                 <h1 class="md:text-7xl text-4xl text font-bold md:font-semibold md:my-6">Your Path to Adoption <br> Starts Here</h1>
                 <p class="max-w-[752px] mx-auto basic md:text-xl">If you are looking for an animal as friend who will stay beside you all the time and want to pet it, you are in the best place. Start your adoption now!</p>
                 <div>
-                    <a href="#main"><button class="bg-basic text-white font-semibold text-xl rounded-lg md:py-4 py-3 md:px-8 px-4 hover:bg-slate-600">View More</button></a>
+                    <a id="view-more" href="#main"><button class="bg-basic text-white font-semibold text-xl rounded-lg md:py-4 py-3 md:px-8 px-4 hover:bg-slate-600">View More</button></a>
                 </div>
             </div>
             </div>
@@ -128,6 +133,8 @@
             <button class="bg-basic text-white font-semibold text-xl rounded-lg md:py-4 py-3 md:px-8 px-4 hover:bg-slate-600">Sort by Price</button>
         </section>
         <!-- All Pets Section -->
+        <!-- Spinner -->
+        <div id="spinner"></div>
         <section id="all-pets-container" class="flex flex-col-reverse md:flex-row-reverse items-start justify-center gap-6">
             <div id="pet-details" class="grid md:grid-cols-3 grid-cols-1 md:my-8 my-6 gap-6 mx-auto">
 
