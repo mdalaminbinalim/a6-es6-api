@@ -81,13 +81,13 @@ const displayPets = (pets) => {
                 <img src="${image}" class="rounded-xl w-[272px] h-[160px]">
                 <h2 class="text-xl font-extrabold">${pet.pet_name ? pet.pet_name : 'Not Named Yet'}</h2>
                 <p class="basic font-bold"><img class="inline w-5" src="images/icons8-apps-48.png" alt=""> Breed: ${breed ? breed : 'Normal Breed'}</p>
-                <p class="basic font-bold"><img class="inline w-5" src="images/icons8-date-50.png" alt=""> Birth: ${pet.date_of_birth ? pet.date_of_birth : 'Not Known'}</p>
+                <p class="basic font-bold"><img class="inline w-5" src="images/icons8-date-50.png" alt=""> Birth: ${pet.date_of_birth ? pet.date_of_birth : 'Not Recorded'}</p>
                 <p class="basic font-bold"><img class="inline w-5" src="images/icons8-male-female-32.png" alt=""> Gender: ${gender ? gender : 'Not Mentioned'}</p>
                 <p class="basic font-bold"><img class="inline w-5" src="images/icons8-dollar-50.png" alt=""> Price: ${price ? '$' + price : ' Not Available'}</p>
                 <div class="flex items-center gap-5 pt-4">
-                    <button onclick="petById('${pet.petId}')" class="hover:bg-[rgb(169,221,224)] rounded-xl"><img class="inline w-5 cursor-pointer" src="images/icons8-like-50.png" alt=""></button>
+                    <button onclick="petById(false, '${pet.petId}')" class="hover:bg-[rgb(169,221,224)] rounded-xl"><img class="inline w-5 cursor-pointer" src="images/icons8-like-50.png" alt=""></button>
                     <div><button class="basic hover:ring-2 hover:ring-[rgb(14,122,129)] hover:bg-[rgba(14,122,129,0.1)] font-semibold text-lg rounded-xl md:py-2 py-1 md:px-5 px-3">Adopt</button></div>
-                    <div><button class="basic hover:ring-2 hover:ring-[rgb(14,122,129)] hover:bg-[rgba(14,122,129,0.1)] font-semibold text-lg rounded-xl md:py-2 py-1 md:px-5 px-3">Details</button></div>
+                    <div><button onclick="petById(true, '${pet.petId}')" class="basic hover:ring-2 hover:ring-[rgb(14,122,129)] hover:bg-[rgba(14,122,129,0.1)] font-semibold text-lg rounded-xl md:py-2 py-1 md:px-5 px-3">Details</button></div>
                 </div>
             </div>
         `;
@@ -114,10 +114,15 @@ const displayPets = (pets) => {
 
 
 // Liked pets Function
-const petById = async (petID) => {
+const petById = async (details, petID) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petID}`);
     const data = await res.json();
-    likedPets(data.petData);
+    if (details) {
+        showDetails(data.petData);
+    }
+    else {
+        likedPets(data.petData);
+    }
 }
 
 // Liked pets displayed
@@ -128,6 +133,26 @@ const likedPets = (liked) => {
     <img src="${liked.image}" class="w-[124px] h-[124px] rounded-xl object-cover">
     `;
     likedContainer.append(likedImage);
+}
+
+// Pet Details Function
+const showDetails = (detail) => {
+    const detailsModal = document.getElementById('details-container');
+    detailsModal.innerHTML = `
+    <dialog id="my_modal_4" class="modal">
+                <div class="modal-box w-11/12 max-w-5xl">
+                <img class="w-full object-cover" src="${detail.image}">
+                    <h3 class="text-lg font-bold">${detail.pet_name ? detail.pet_name : 'Not Named Yet'}</h3>
+                    <p class="py-4">Click the button below to close</p>
+                    <div class="modal-action">
+                        <form method="dialog" class="w-full">
+                            <button class="btn w-full">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
+    `;
+    my_modal_4.showModal();
 }
 
 
