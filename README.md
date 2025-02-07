@@ -20,3 +20,7 @@ Human are by nature social. Sometimes this socialism crosses the boundaries towa
 - .append() has been applied to insert each pet card inside it's parent container after each forEach loop.
 - Object destructuring is applied in order to get the property name from an object easily.
 - Let and const were used instead of var in declaring all the variables.
+
+# Live Site Link:
+
+## https://peddy-a6-es6.netlify.app/
