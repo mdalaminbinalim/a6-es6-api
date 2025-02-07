@@ -117,7 +117,7 @@ const displayPets = (pets) => {
                 petsContainer.append(petDetails);
             }
 
-        }, 1000)
+        }, 2000)
 
 
 
